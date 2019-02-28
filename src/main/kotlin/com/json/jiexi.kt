@@ -4,30 +4,40 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 
-
-fun main() {
+fun main(args: Array<String>) {
     var str = """
-     [
-          {
+    [
+        {
             "name": "张三",
             "sex": "男",
             "age": 20
-          },
-          {
+        },
+        {
             "name": "李四",
             "sex": "男",
             "age": 22
-          },
-          {
+        },
+        {
             "name": "王五",
             "sex": "女",
             "age": 24
-          }
+        }
     ]
-   """.trimIndent()
+    """
 
+    //Gson 解析
+    println(str)
 
-    //println(Gson().fromJson(str,User::class.java)) // 转成对象
+    var str1 = """
+        {
+            "name": "张三",
+            "sex": "男",
+            "age": 20
+        }
+    """.trimIndent()
+    // 转成对象
+    var user =  Gson().fromJson(str1,User::class.java)
+    println(user)
 
     //转成列表
     //写法（多行）
@@ -39,4 +49,5 @@ fun main() {
     users.forEach {
         println("name= "+ it.name )
     }
+
 }
